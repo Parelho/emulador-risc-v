@@ -52,8 +52,8 @@ class RiscVEmulator:
         opcode = instruction & 0x7F
         rd = (instruction >> 7) & 0x1F
         funct3 = (instruction >> 12) & 0x7
-        rs1 = (instruction >> 15) & 0x1F
-        rs2 = (instruction >> 20) & 0x1F
+        rs2 = (instruction >> 15) & 0x1F
+        rs1 = (instruction >> 20) & 0x1F
         funct7 = (instruction >> 25) & 0x7F
 
         # Default immediate value
@@ -112,8 +112,8 @@ def test_riscv_emulator():
     emulator.registers[2] = 0b00000101  # r2 = 5
 
     program = [
-        (0b0000000 << 25) | (0 << 15) | (1 << 20) | (3 << 7) | 0b0110011,  # r3 = r0 + r1
-        (0b0100000 << 25) | (3 << 15) | (2 << 20) | (4 << 7) | 0b0110011,  # r4 = r3 - r2
+        (0b0000000 << 25) | (1 << 15) | (0 << 20) | (3 << 7) | 0b0110011,  # r3 = r0 + r1
+        (0b0100000 << 25) | (2 << 15) | (3 << 20) | (4 << 7) | 0b0110011,  # r4 = r3 - r2
         0x00000013
     ]
     print("Before execution:")
